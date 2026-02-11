@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 import os
-REQUIRES = ['numpy', 'scipy', 'matplotlib', 'h5py', 'caput', 'healpy', 'astropy']
+REQUIRES = ['numpy', 'scipy', 'matplotlib', 'h5py', 'caput', 'healpy', 'astropy', 'mpi4py' ]
 setup(name='ULSA',
       version='0.1',
       description='The Ultral-Long wavelength Sky model with Absorption',
