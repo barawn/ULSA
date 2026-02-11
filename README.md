@@ -9,7 +9,7 @@ The output can be stored either in memory by means of a numpy array, or in a HDF
 ## Updated Installation (PSA/cozzyd)
 
 You need a Fortran compiler (something that implements f77 - gfortran is fine).
-You need an MPI implementation installed (e.g. libmpich or OpenMPI - see <https://github.com/mpi4py/mpi4py>.
+You need an MPI implementation installed (e.g. libmpich or OpenMPI - see <https://github.com/mpi4py/mpi4py>. You probably want OpenMPI.
 
 You probably want a Python virtual environment so you might need the ``venv`` Python package installed.
 Otherwise be bold and ignore the first two lines.
@@ -25,7 +25,9 @@ venv and also change the source line.
 
 ## Example (updated PSA/cozzyd)
 
-There are an example in ./example, one can simpyly go to the dir and run example.py.
+Look at example/example.py. You probably want to run this using ``mpirun`` to take advantage of multiple
+cores on your system (e.g. ``mpirun python3 example.py``).
+
 NOTE: The NE2001 input files (everything ending in .inp or .dat) in that directory
 are required to run any ULSA program. They have to be located in that directory.
 
