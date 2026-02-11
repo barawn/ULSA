@@ -1,6 +1,8 @@
 from setuptools import setup, find_packages
 import os
-REQUIRES = ['numpy', 'scipy', 'matplotlib', 'h5py', 'caput', 'healpy', 'astropy', 'mpi4py' ]
+REQUIRES = ['numpy', 'scipy', 'matplotlib', 'h5py',
+            'caput @ git+ssh://git@github.com/barawn/caput.git',      
+            'healpy', 'astropy', 'mpi4py' ]
 setup(name='ULSA',
       version='0.1',
       description='The Ultral-Long wavelength Sky model with Absorption',
@@ -22,8 +24,5 @@ setup(name='ULSA',
       #install_requires=[
       #    'markdown',
       #],
-      dependency_links = [
-          'https://github.com/barawn/caput/tree/zuo/develop'
-          ],
       include_package_data=True,
       zip_safe=False)
