@@ -36,7 +36,7 @@ import os
 import sys
 
 # import the dll
-libNE2001 = ct.CDLL('/public/home/wufq/congyanping/Software/NE2001_4python/src.NE2001/libNE2001.so')
+libNE2001 = ct.CDLL('libNE2001.so')
 # max integrated distance (kpc)
 dist = 50.
 
@@ -340,7 +340,7 @@ class absorption_JRZ(object):
             step = 0.1
         else:
             step = 0.01
-        N =np.int(dist/step)
+        N =int(dist/step)
 
         nd = ct.pointer( ct.c_int(N) )          # setup the pointer
 
@@ -372,7 +372,7 @@ class absorption_JRZ(object):
 
         while i <= b:
             #index_ = np.int(i / step - 1)
-            index_ = np.int(i / step) - 1
+            index_ = int(i / step) - 1
             s += (f(i,args[0],args[1],args[2],args[3]) * np.exp(-tao[index_])) * dx
             i += dx
         #here find the bug
@@ -395,7 +395,7 @@ class absorption_JRZ(object):
         s = 0
         #take the left value dont take the right value
         while i < b:
-            index_ = np.int(i / step - 1)
+            index_ = int(i / step - 1)
             s += (f(i,args[0],args[1],args[2],args[3]) * np.exp(-tao[index_])) * dx
             i += dx
         #here find the bug
