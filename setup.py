@@ -23,7 +23,7 @@ setup(name='ULSA',
       #    'markdown',
       #],
       dependency_links = [
-          'https://github.com/zuoshifan/caput/tree/zuo/develop'
+          'https://github.com/barawn/caput/tree/zuo/develop'
           ],
       include_package_data=True,
       zip_safe=False)
