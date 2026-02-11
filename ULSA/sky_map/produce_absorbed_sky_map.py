@@ -36,7 +36,22 @@ import os
 import sys
 
 # import the dll
-libNE2001 = ct.CDLL('libNE2001.so')
+libNE2001 = None
+try:
+    from pathlib import Path
+    import ULSA
+    ne2001_path = None
+    local_path = Path(ULSA.__path__[0])/'NE2001/NE2001_4python/NE2001_4python/src.NE2001/libNE2001.so'
+    if os.path.exists(local_path):
+        ne2001_path = local_path
+    else:
+        # let the linker find it
+        ne2001_path = 'libNE2001.so'
+    libNE2001 = ct.CDLL(ne2001_path)
+except Exception as e:
+    print("Could not load the NE2001 library!")
+    raise e
+
 # max integrated distance (kpc)
 dist = 50.
 
