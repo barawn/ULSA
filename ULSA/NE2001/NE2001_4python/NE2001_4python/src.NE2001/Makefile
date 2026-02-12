@@ -5,11 +5,14 @@
 # Then type 'make pgm' to make the NE2001 interface 
 # or        'make lib' to meke the library.
 #
-FC      = f77
+# PSA: just comment out flags and compiler, we'll handle them in the script
+# dynamically.
+#
+#FC      = f77
 #FC=ifort
 RANLIB  = ranlib
 ARFLAGS = rc
-FFLAGS  = -O -std=legacy
+#FFLAGS  = -O -std=legacy
 LDFLAGS = -s
 #
 BINDIR = ../bin.NE2001
@@ -45,7 +48,7 @@ lib$(PROGRAM).a: $(OBJECTS)
 	$(RANLIB) $@
 
 lib$(PROGRAM).so: $(OBJECTS2)
-	$(FC) -O5 -shared -fPIC  -g -o lib$(PROGRAM).so $(OBJECTS2)
+	$(FC) $(FFLAGS) -O5 -shared -fPIC  -g -o lib$(PROGRAM).so $(OBJECTS2)
 
 
 
