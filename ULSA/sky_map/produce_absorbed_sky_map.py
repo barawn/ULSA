@@ -595,6 +595,7 @@ class absorption_JRZ(object):
                 absorb = result_absorb[:,1]
                 I_E = self.I_E(self.v)
                 result = []
+                tau_result = []
                 print ('in the beginning')
                 for pix_number in range(unabsorb.size):
                     n = np.arange(6,0,-1)
@@ -608,6 +609,7 @@ class absorption_JRZ(object):
                     mean_exptao = Y / X
                     pix_value = diffuse_raw_[pix_number] * mean_exptao + I_E*np.exp(-tao[-1])
                     result.append([pix_number,pix_value])
+                    tau_result.append([pix_number,tao[-1]])
                     #print 'pixel_number',pix_number
                 with h5py.File('./' + str(self.emi_form)+str(self.v)+'MHz_sky_map_with_absorption.hdf5','w') as h:
                     h.create_dataset('data',data = np.array(result)[:,1])
@@ -620,6 +622,7 @@ class absorption_JRZ(object):
                     if self.index_type == 'direction_dependent_index':
                         index = self.Beta_G
                     h.create_dataset('spectral_index',data = index)
+                    h.create_dataset('tau',data = np.array(tau_result)[:,1])
                     h.create_dataset('smooth_absorb',data = absorb)
                     print ('end, good job!, you are the best')
 
